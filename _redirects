@@ -8,6 +8,19 @@
 /css/*%2540* /css/:splat@:splat 200
 /css/*%40* /css/:splat@:splat 200
 
+# Redirecionar arquivos JS com caracteres especiais
+/js/*%2540* /js/:splat@:splat 200
+/js/*%40* /js/:splat@:splat 200
+
+# Redirecionar arquivos de mídia
+/media/* /media/:splat 200
+
+# Redirecionar arquivos específicos que estão falhando
+/*.min.js%2540* /:splat@:splat 200
+/*.min.css%2540* /:splat@:splat 200
+/*.js%2540* /:splat@:splat 200
+/*.css%2540* /:splat@:splat 200
+
 # SPA fallback - redirecionar para as pastas corretas
 /1/* /1/:splat 200
 /2/* /2/:splat 200
