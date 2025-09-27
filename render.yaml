@@ -2,10 +2,27 @@ services:
   - type: web
     name: pixturbinado
     env: static
-    buildCommand: npm run build
+    buildCommand: echo "No build needed"
     staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*%2540*
+        destination: /$1@$2
+      - type: rewrite
+        source: /*%253D*
+        destination: /$1=$2
+      - type: rewrite
+        source: /*%40*
+        destination: /$1@$2
+      - type: rewrite
+        source: /*%3D*
+        destination: /$1=$2
     headers:
       - path: /*.css
+        headers:
+          Content-Type: text/css; charset=utf-8
+          Cache-Control: no-cache, no-store, must-revalidate
+      - path: /**/*.css
         headers:
           Content-Type: text/css; charset=utf-8
           Cache-Control: no-cache, no-store, must-revalidate
@@ -14,6 +31,10 @@ services:
           Content-Type: text/css; charset=utf-8
           Cache-Control: no-cache, no-store, must-revalidate
       - path: /*.js
+        headers:
+          Content-Type: application/javascript; charset=utf-8
+          Cache-Control: no-cache, no-store, must-revalidate
+      - path: /**/*.js
         headers:
           Content-Type: application/javascript; charset=utf-8
           Cache-Control: no-cache, no-store, must-revalidate

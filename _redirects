@@ -1,25 +1,29 @@
-# Redirecionamentos para PixTurbinado
+# Redirecionamentos para PixTurbinado - Render Config
 
-# Redirecionar arquivos com %40 para @ (dupla codificação)
-/*%2540* /:splat@:splat 301
-/*%40* /:splat@:splat 301
+# Decodificar URLs com caracteres especiais (ordem importante!)
+/*%2540ver%253D* /:splat@ver=:splat 200
+/*%40ver%3D* /:splat@ver=:splat 200
+/*%2540* /:splat@:splat 200
+/*%253D* /:splat=:splat 200
+/*%40* /:splat@:splat 200
+/*%3D* /:splat=:splat 200
 
-# Redirecionar arquivos CSS com caracteres especiais
-/css/*%2540* /css/:splat@:splat 200
-/css/*%40* /css/:splat@:splat 200
+# Arquivos específicos com problemas de codificação
+/*/jquery.min.js%2540ver%253D* /:splat/jquery.min.js@ver=:splat 200
+/*/jquery-migrate.min.js%2540ver%253D* /:splat/jquery-migrate.min.js@ver=:splat 200
+/*/frontend.min.js%2540ver%253D* /:splat/frontend.min.js@ver=:splat 200
+/*/core.min.js%2540ver%253D* /:splat/core.min.js@ver=:splat 200
+/*/elements-handlers.min.js%2540ver%253D* /:splat/elements-handlers.min.js@ver=:splat 200
+/*/hello-frontend.min.js%2540ver%253D* /:splat/hello-frontend.min.js@ver=:splat 200
+/*/jquery-numerator.min.js%2540ver%253D* /:splat/jquery-numerator.min.js@ver=:splat 200
+/*/jquery.sticky.min.js%2540ver%253D* /:splat/jquery.sticky.min.js@ver=:splat 200
+/*/webpack.runtime.min.js%2540ver%253D* /:splat/webpack.runtime.min.js@ver=:splat 200
+/*/webpack-pro.runtime.min.js%2540ver%253D* /:splat/webpack-pro.runtime.min.js@ver=:splat 200
+/*/frontend-modules.min.js%2540ver%253D* /:splat/frontend-modules.min.js@ver=:splat 200
 
-# Redirecionar arquivos JS com caracteres especiais
-/js/*%2540* /js/:splat@:splat 200
-/js/*%40* /js/:splat@:splat 200
-
-# Redirecionar arquivos de mídia
-/media/* /media/:splat 200
-
-# Redirecionar arquivos específicos que estão falhando
-/*.min.js%2540* /:splat@:splat 200
-/*.min.css%2540* /:splat@:splat 200
-/*.js%2540* /:splat@:splat 200
-/*.css%2540* /:splat@:splat 200
+# CSS files com problemas de codificação
+/*/css/*%2540ver%253D*.css /:splat/css/:splat@ver=:splat.css 200
+/*/css/*%40ver%3D*.css /:splat/css/:splat@ver=:splat.css 200
 
 # SPA fallback - redirecionar para as pastas corretas
 /1/* /1/:splat 200

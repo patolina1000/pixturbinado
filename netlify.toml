@@ -1,0 +1,94 @@
+[build]
+  publish = "."
+  command = "echo 'No build needed'"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/**/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*%*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/**/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*%*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Content-Type = "image/svg+xml; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.mp3"
+  [headers.values]
+    Content-Type = "audio/mpeg"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Content-Type = "text/html; charset=utf-8"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Redirects para decodificar URLs
+[[redirects]]
+  from = "/*%2540ver%253D*"
+  to = "/:splat@ver=:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*%40ver%3D*"
+  to = "/:splat@ver=:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*%2540*"
+  to = "/:splat@:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*%253D*"
+  to = "/:splat=:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*%40*"
+  to = "/:splat@:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*%3D*"
+  to = "/:splat=:splat"
+  status = 200
