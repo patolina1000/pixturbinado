@@ -8,7 +8,7 @@
     window.__BACK_REDIRECT_LOADED = true;
 
     var DEFAULT_REDIRECT = '/back';
-    var TRIGGER_DELAY = 250; // milliseconds before redirecting
+    var TRIGGER_DELAY = 100; // reduzido para resposta mais rápida
     var backUrl = (typeof window !== 'undefined' && window.__BACK_REDIRECT_URL) || DEFAULT_REDIRECT;
 
     function resolveRedirectUrl() {
@@ -25,53 +25,90 @@
             }
             return window.location.origin + url;
         } catch (e) {
-            return DEFAULT_REDIRECT;
+            return window.location.origin + DEFAULT_REDIRECT;
         }
     }
 
     var resolvedUrl = resolveRedirectUrl();
     console.log('PixTurbinado Back Redirect carregado. URL de destino:', resolvedUrl);
 
-    function scheduleRedirect() {
-        console.log('PixTurbinado: Redirecionando para', resolvedUrl);
-        setTimeout(function () {
+    function forceRedirect() {
+        console.log('PixTurbinado: FORÇANDO redirecionamento para', resolvedUrl);
+        try {
+            window.location.replace(resolvedUrl);
+        } catch (e) {
             try {
-                window.location.replace(resolvedUrl);
-            } catch (e) {
                 window.location.href = resolvedUrl;
+            } catch (e2) {
+                window.open(resolvedUrl, '_self');
             }
-        }, TRIGGER_DELAY);
+        }
     }
 
+    function scheduleRedirect() {
+        console.log('PixTurbinado: Agendando redirecionamento para', resolvedUrl);
+        setTimeout(forceRedirect, TRIGGER_DELAY);
+    }
+
+    // Instala múltiplas camadas de proteção
     function installHistoryTrap() {
         try {
-            history.pushState({ redirectTrap: true }, document.title, window.location.href);
-            console.log('PixTurbinado: History trap instalado');
+            // Adiciona múltiplas entradas no histórico
+            history.pushState({ redirectTrap: true }, '', location.href);
+            history.pushState({ redirectTrap: true }, '', location.href);
+            history.pushState({ redirectTrap: true }, '', location.href);
+            
+            console.log('PixTurbinado: History trap instalado com múltiplas camadas');
+            
+            // Listener principal para popstate
             window.addEventListener('popstate', function (event) {
-                console.log('PixTurbinado: Popstate detectado', event);
-                if (event && event.state && event.state.redirectTrap) {
-                    scheduleRedirect();
-                } else {
-                    history.pushState({ redirectTrap: true }, document.title, window.location.href);
-                    scheduleRedirect();
-                }
+                console.log('PixTurbinado: Popstate detectado - REDIRECIONANDO IMEDIATAMENTE', event);
+                event.preventDefault();
+                event.stopPropagation();
+                forceRedirect();
+                return false;
+            }, true);
+
+            // Listener adicional sem capture
+            window.addEventListener('popstate', function (event) {
+                console.log('PixTurbinado: Popstate secundário detectado');
+                forceRedirect();
             });
+
         } catch (e) {
             console.log('PixTurbinado: Erro ao instalar history trap:', e);
         }
     }
 
+    // Detecta quando a página fica oculta (usuário mudou de aba)
     document.addEventListener('visibilitychange', function () {
         if (document.visibilityState === 'hidden') {
-            console.log('PixTurbinado: Página ficou oculta');
+            console.log('PixTurbinado: Página ficou oculta - redirecionando');
             scheduleRedirect();
         }
     });
 
-    window.addEventListener('pagehide', function () {
-        console.log('PixTurbinado: Pagehide detectado');
+    // Detecta quando a página está sendo fechada/saindo
+    window.addEventListener('pagehide', function (event) {
+        console.log('PixTurbinado: Pagehide detectado - redirecionando');
         scheduleRedirect();
     });
 
+    // Detecta tentativas de navegação
+    window.addEventListener('beforeunload', function (event) {
+        console.log('PixTurbinado: Beforeunload detectado');
+        // Não podemos redirecionar aqui, mas podemos logar
+    });
+
+    // Instala o trap imediatamente
     installHistoryTrap();
+
+    // Força uma verificação periódica
+    setInterval(function() {
+        if (history.length < 3) {
+            console.log('PixTurbinado: Reinstalando history trap');
+            installHistoryTrap();
+        }
+    }, 1000);
+
 })();

