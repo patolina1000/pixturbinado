@@ -1,7 +1,12 @@
 # Redirecionamentos para PixTurbinado
 
-# Redirecionar arquivos com %40 para @
+# Redirecionar arquivos com %40 para @ (dupla codificação)
+/*%2540* /:splat@:splat 301
 /*%40* /:splat@:splat 301
+
+# Redirecionar arquivos CSS com caracteres especiais
+/css/*%2540* /css/:splat@:splat 200
+/css/*%40* /css/:splat@:splat 200
 
 # SPA fallback - redirecionar para as pastas corretas
 /1/* /1/:splat 200

@@ -9,12 +9,12 @@ services:
         headers:
           X-Frame-Options: SAMEORIGIN
           X-Content-Type-Options: nosniff
-          Cache-Control: public, max-age=3600
+          Cache-Control: no-cache, no-store, must-revalidate
       - path: /*.css
         headers:
           Content-Type: text/css
-          Cache-Control: public, max-age=2592000
+          Cache-Control: no-cache, no-store, must-revalidate
       - path: /*.js
         headers:
           Content-Type: application/javascript
-          Cache-Control: public, max-age=2592000
+          Cache-Control: no-cache, no-store, must-revalidate
