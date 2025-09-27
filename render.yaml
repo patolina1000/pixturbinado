@@ -4,19 +4,9 @@ services:
     env: static
     buildCommand: echo "No build needed"
     staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*%2540*
-        destination: /$1@$2
-      - type: rewrite
-        source: /*%253D*
-        destination: /$1=$2
-      - type: rewrite
-        source: /*%40*
-        destination: /$1@$2
-      - type: rewrite
-        source: /*%3D*
-        destination: /$1=$2
+    envVars:
+      - key: NODE_ENV
+        value: production
     headers:
       - path: /*.css
         headers:

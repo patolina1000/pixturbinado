@@ -1,17 +1,40 @@
-# Configurações para PixTurbinado
+# Configurações para PixTurbinado - Render Compatible
 RewriteEngine On
+
+# Force correct MIME types - CRITICAL for Render
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType application/x-javascript .js
+    AddType text/javascript .js
+    AddType image/svg+xml .svg
+    AddType audio/mpeg .mp3
+    AddType text/html .html
+    
+    # Force charset
+    AddDefaultCharset utf-8
+    AddCharset utf-8 .css
+    AddCharset utf-8 .js
+    AddCharset utf-8 .html
+</IfModule>
+
+# Remove .html extension and force correct content type
+<IfModule mod_rewrite.c>
+    # Force MIME types with headers
+    RewriteCond %{REQUEST_FILENAME} \.css$ [NC]
+    RewriteRule .* - [E=CSS:1]
+    Header set Content-Type "text/css; charset=utf-8" env=CSS
+    
+    RewriteCond %{REQUEST_FILENAME} \.js$ [NC]
+    RewriteRule .* - [E=JS:1]
+    Header set Content-Type "application/javascript; charset=utf-8" env=JS
+</IfModule>
 
 # Permitir acesso a arquivos com caracteres especiais - URLs codificadas
 RewriteRule ^(.*)%2540(.*)$ /$1@$2 [L,R=301]
 RewriteRule ^(.*)%40(.*)$ /$1@$2 [L,R=301]
 RewriteRule ^(.*)%253D(.*)$ /$1=$2 [L,R=301]
 RewriteRule ^(.*)%3D(.*)$ /$1=$2 [L,R=301]
-
-# Configurar MIME types para arquivos CSS e JS
-AddType text/css .css
-AddType application/javascript .js
-AddType image/svg+xml .svg
-AddType audio/mpeg .mp3
 
 # Desabilitar cache para desenvolvimento
 <IfModule mod_expires.c>
