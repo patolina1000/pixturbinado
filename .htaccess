@@ -1,9 +1,11 @@
 # Configurações para PixTurbinado
 RewriteEngine On
 
-# Permitir acesso a arquivos com caracteres especiais
-RewriteRule ^(.*)%40(.*)$ /$1@$2 [L,R=301]
+# Permitir acesso a arquivos com caracteres especiais - URLs codificadas
 RewriteRule ^(.*)%2540(.*)$ /$1@$2 [L,R=301]
+RewriteRule ^(.*)%40(.*)$ /$1@$2 [L,R=301]
+RewriteRule ^(.*)%253D(.*)$ /$1=$2 [L,R=301]
+RewriteRule ^(.*)%3D(.*)$ /$1=$2 [L,R=301]
 
 # Configurar MIME types para arquivos CSS e JS
 AddType text/css .css
