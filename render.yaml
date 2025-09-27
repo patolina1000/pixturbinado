@@ -4,7 +4,17 @@ services:
     env: static
     buildCommand: npm run build
     staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    headers:
+      - path: /*
+        headers:
+          X-Frame-Options: SAMEORIGIN
+          X-Content-Type-Options: nosniff
+          Cache-Control: public, max-age=3600
+      - path: /*.css
+        headers:
+          Content-Type: text/css
+          Cache-Control: public, max-age=2592000
+      - path: /*.js
+        headers:
+          Content-Type: application/javascript
+          Cache-Control: public, max-age=2592000
