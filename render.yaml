@@ -1,59 +1,12 @@
 services:
   - type: web
     name: pixturbinado
-    env: static
-    buildCommand: echo "No build needed"
-    staticPublishPath: .
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
     envVars:
       - key: NODE_ENV
         value: production
-    headers:
-      - path: /*.css
-        headers:
-          Content-Type: text/css; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /**/*.css
-        headers:
-          Content-Type: text/css; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*%*.css
-        headers:
-          Content-Type: text/css; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.js
-        headers:
-          Content-Type: application/javascript; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /**/*.js
-        headers:
-          Content-Type: application/javascript; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*%*.js
-        headers:
-          Content-Type: application/javascript; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.svg
-        headers:
-          Content-Type: image/svg+xml; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.png
-        headers:
-          Content-Type: image/png
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.jpg
-        headers:
-          Content-Type: image/jpeg
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.mp3
-        headers:
-          Content-Type: audio/mpeg
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*.html
-        headers:
-          Content-Type: text/html; charset=utf-8
-          Cache-Control: no-cache, no-store, must-revalidate
-      - path: /*
-        headers:
-          X-Frame-Options: SAMEORIGIN
-          X-Content-Type-Options: nosniff
-          Cache-Control: no-cache, no-store, must-revalidate
+      - key: PORT
+        generateValue: true

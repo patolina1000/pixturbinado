@@ -2,12 +2,21 @@
   "name": "pixturbinado",
   "version": "1.0.0",
   "description": "PixTurbinado - Sistema de funil de conversão",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "build": "echo 'Build completed - static site'",
-    "start": "echo 'Static site ready'"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'Build completed - Node.js server'"
   },
-  "keywords": ["html", "static", "landing-page"],
+  "dependencies": {
+    "express": "^4.18.2",
+    "mime-types": "^2.1.35",
+    "cors": "^2.8.5"
+  },
+  "keywords": ["html", "static", "landing-page", "express"],
   "author": "PixTurbinado",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
