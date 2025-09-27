@@ -134,6 +134,17 @@ app.get('/health-basic', (req, res) => {
     });
 });
 
+// Serve back redirect page
+app.get('/back', (req, res) => {
+    const filePath = path.join(__dirname, 'back', 'index.html');
+    if (fs.existsSync(filePath)) {
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.sendFile(filePath);
+    } else {
+        res.status(404).send('Back page not found');
+    }
+});
+
 // Route for root - serve main index.html
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
