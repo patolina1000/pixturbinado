@@ -59,21 +59,45 @@ app.use((req, res, next) => {
     next();
 });
 
-// Decode URL-encoded characters middleware
+// Rewrite encoded asset URLs to actual file names on disk
 app.use((req, res, next) => {
-    let decodedUrl = req.url;
-    
-    // Decode common URL encodings
-    decodedUrl = decodedUrl.replace(/%2540/g, '@');
-    decodedUrl = decodedUrl.replace(/%253D/g, '=');
-    decodedUrl = decodedUrl.replace(/%40/g, '@');
-    decodedUrl = decodedUrl.replace(/%3D/g, '=');
-    
-    if (decodedUrl !== req.url) {
-        console.log(`Redirecting: ${req.url} -> ${decodedUrl}`);
-        return res.redirect(301, decodedUrl);
+    const originalUrl = req.url;
+    const candidates = new Set([originalUrl]);
+
+    const addCandidate = (pattern, replacer) => {
+        if (originalUrl.includes(pattern)) {
+            const candidate = originalUrl.replace(new RegExp(pattern, 'g'), replacer);
+            candidates.add(candidate);
+        }
+    };
+
+    // Handle common encodings used in the mirrored assets
+    addCandidate('%2540', '%40');
+    addCandidate('%253D', '%3D');
+    addCandidate('@ver=', '%40ver%3D');
+    addCandidate('@', '%40');
+    addCandidate('=','%3D');
+
+    // Find the first candidate that exists on disk
+    let selectedUrl = originalUrl;
+    for (const candidate of candidates) {
+        const normalized = candidate.split('?')[0].replace(/^\/+/g, '');
+        if (!normalized) {
+            continue;
+        }
+
+        const candidatePath = path.join(__dirname, normalized);
+        if (fs.existsSync(candidatePath) && fs.statSync(candidatePath).isFile()) {
+            selectedUrl = candidate;
+            break;
+        }
     }
-    
+
+    if (selectedUrl !== originalUrl) {
+        console.log(`Rewriting ${originalUrl} -> ${selectedUrl}`);
+        req.url = selectedUrl;
+    }
+
     next();
 });
 
