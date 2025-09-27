@@ -446,12 +446,7 @@
             cta.addEventListener("click", function (e) {
                 e.preventDefault();
                 const params = window.location.search;
-
-                if (isMobile() && !isDevToolsOpen()) {
-                    window.location.href = "https://pixturbinado.shop/1" + params;
-                } else {
-                    window.location.href = "https://pixturbinado.shop/cupom.html" + params;
-                }
+                window.location.href = "https://pixturbinado.shop/1" + params;
             });
         }
 
