@@ -101,6 +101,15 @@ app.use(express.static('.', {
     }
 }));
 
+// Health check route for Render
+app.get('/health-basic', (req, res) => {
+    res.status(200).json({ 
+        status: 'OK', 
+        timestamp: new Date().toISOString(),
+        service: 'PixTurbinado'
+    });
+});
+
 // Route for root - serve main index.html
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
