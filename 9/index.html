@@ -11,16 +11,7 @@
     window.__BACK_REDIRECT_URL = '/back';
 </script>
 <script src="/js/back-redirect.js"></script>
-<script type="text/javascript">
-    var back_redirect_back_link = 'https://pixturbinado.shop/back';
-    history.pushState({}, "", location.href);
-    history.pushState({}, "", location.href);
-    window.onpopstate = function () {
-        setTimeout(function () {
-            location.href = back_redirect_back_link;
-        }, 0);
-    };
-</script>
+
 	
 	<script>
 		// Script coringa para preservar UTMs em qualquer botão <a>
