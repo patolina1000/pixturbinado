@@ -1,0 +1,13 @@
+{
+  "name": "pixturbinado",
+  "version": "1.0.0",
+  "description": "PixTurbinado - Sistema de funil de conversão",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed - static site'",
+    "start": "echo 'Static site ready'"
+  },
+  "keywords": ["html", "static", "landing-page"],
+  "author": "PixTurbinado",
+  "license": "MIT"
+}
