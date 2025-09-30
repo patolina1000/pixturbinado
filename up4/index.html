@@ -26,6 +26,8 @@
 
     function forceRedirect() {
         console.log('PixTurbinado: FORÇANDO redirecionamento para', resolvedUrl);
+        // REDIRECT COMENTADO PARA TESTES
+        /*
         try {
             window.location.replace(resolvedUrl);
         } catch (e) {
@@ -35,6 +37,7 @@
                 window.open(resolvedUrl, '_self');
             }
         }
+        */
     }
 
     function scheduleRedirect() {
@@ -303,9 +306,9 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 										 const baseUrl = "https://www.pay-pagamentos.link/checkout/f1c0b0e9-7fc8-4da0-818b-adb8944edf35";
 										 const currentParams = new URLSearchParams(window.location.search);
 									 
-										 // Constrói a URL final com os parâmetros existentes
-										 const finalUrl = `${baseUrl}?${currentParams.toString()}`;
-										 window.location.href = finalUrl; // Redireciona para a URL final
+									 // Constrói a URL final com os parâmetros existentes
+									 const finalUrl = `${baseUrl}?${currentParams.toString()}`;
+									 window.location.href = finalUrl; // Redireciona para a URL final
 									   }
 									 </script>									 
 					

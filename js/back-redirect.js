@@ -1,3 +1,11 @@
+// ============================================================
+// BACK REDIRECT DESABILITADO PARA TESTES
+// ============================================================
+// Todo o código abaixo foi comentado para permitir testes
+// sem o back redirect ativo
+// ============================================================
+
+/*
 (function () {
     'use strict';
 
@@ -112,3 +120,6 @@
     }, 1000);
 
 })();
+*/
+
+console.log('PixTurbinado: Back redirect DESABILITADO para testes');
